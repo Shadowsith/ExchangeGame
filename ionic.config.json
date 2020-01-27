@@ -1,0 +1,7 @@
+{
+  "name": "inventoryApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
