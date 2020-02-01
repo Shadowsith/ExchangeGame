@@ -17,7 +17,7 @@ export class Sqlite {
 
     public async create(): Promise<void> {
         await this.open();
-        this.db.executeSql('CREATE TABLE test (first_name VARCHAR(100), last_name VARCHAR(100))', []);
+        await this.db.executeSql('CREATE TABLE test (first_name VARCHAR(100), last_name VARCHAR(100))', []);
     }
 
     public async execute(query: string): Promise<any> {
