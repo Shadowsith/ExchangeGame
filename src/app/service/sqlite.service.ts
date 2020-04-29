@@ -17,11 +17,11 @@ export class Sqlite {
 
     public async create(): Promise<void> {
         await this.open();
-        await this.db.executeSql('CREATE TABLE test (first_name VARCHAR(100), last_name VARCHAR(100))', []);
+        await this.db.executeSql('CREATE TABLE IF NOT EXISTS test (first_name VARCHAR(100), last_name VARCHAR(100))');
     }
 
     public async execute(query: string): Promise<any> {
-        const res = await this.db.executeSql(query, []);
+        const res = await this.db.executeSql(query);
         return res;
     }
 }
