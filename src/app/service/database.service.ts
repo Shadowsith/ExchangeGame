@@ -75,8 +75,9 @@ export class Database {
         }
         if(!this.db.has(Tables.settings).value()) {
             this.db.set(Tables.settings, [
-                {id: 1, name: 'apikey', value: 'none'},
-                {id: 2, name: 'ui_color', value: 'white'}
+                {id: 1, name: 'apikey', value: 'demo'},
+                {id: 2, name: 'ui_color', value: 'white'},
+                {id: 3, name: 'dark_mode', value: 'none'}
             ]).write();
         }
     }

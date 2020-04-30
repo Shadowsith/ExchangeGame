@@ -1,9 +1,11 @@
 export class Stock {
     public id: number;
-    public isin: string; // Stock number
-    public wkn: string;
-    public symbol: string; //
-    public company: string;
+    public symbol: string;
+    public name: string;
+    public type: string;
+    public region: string;
+    public currency: string;
+    public amount: number; // amount of stocks purchased at the same time
     public purchasePrice: number;
     public currentPrice: number;
     public purchaseDate: Date;

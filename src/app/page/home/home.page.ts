@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Database } from 'src/app/service/database.service';
-import { StorageService } from 'src/app/service/storage.service';
-import { App } from 'src/app/service/app.service';
+import { Component } from '@angular/core';
+import { StockService } from 'src/app/service/stock.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +9,8 @@ import { App } from 'src/app/service/app.service';
 })
 export class HomePage {
 
-  constructor(private store: StorageService) {
+  constructor(private http: HttpClient) {
+    const stock = new StockService(http);
+    stock.find('IBM');
   }
 }
