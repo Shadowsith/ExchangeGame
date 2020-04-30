@@ -14,9 +14,6 @@ export class Database {
     constructor(storage: StorageService) {
         this.storeage = storage;
         this.db = low(new Memory(''));
-        this.db.defaults({
-            stocks: [{id: 1, name: 'meep'}]
-        }).write();
     }
 
     public get(): low.LowdbSync<any> {
@@ -50,11 +47,15 @@ export class Database {
     }
 
     public save(): void {
-        this.storeage.setDatabase(this.db.defaults);
+        this.storeage.setDatabase(this.db);
     }
 
     public async read() {
-        const json: string = await this.storeage.getDatabase();
-        this.db.defaults(JSON.parse(json));
+        let json = await this.storeage.getDatabase();
+        json = JSON.parse(json);
+        this.db.defaults(json).write();
+        if(!this.db.has('test').value()) {
+            this.db.set('test', []).write();
+        }
     }
 }

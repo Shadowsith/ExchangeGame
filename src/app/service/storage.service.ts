@@ -1,7 +1,9 @@
 import { Storage } from '@ionic/storage';
 
 export class StorageService {
-    constructor(private store: Storage) {
+    private store: Storage;
+    constructor() {
+        this.store = new Storage(null);
     }
 
     public async getSettings(): Promise<any> {
