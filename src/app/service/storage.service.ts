@@ -6,14 +6,6 @@ export class StorageService {
         this.store = new Storage(null);
     }
 
-    public async getSettings(): Promise<any> {
-        return await this.get('settings');
-    }
-
-    public setSettings(value: any): void {
-        this.set("settings", value);
-    }
-
     public async getDatabase(): Promise<string> {
         return await this.get('database');
     }
