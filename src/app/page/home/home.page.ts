@@ -12,6 +12,6 @@ export class HomePage {
   constructor(private http: HttpClient) {
     const stock = new StockService(http);
     // stock.find('IBM').then(x => console.log(x));
-    stock.purchaseTest('IBM', 20).then(x => console.log(x));
+    // stock.purchaseTest('IBM', 20).then(x => console.log(x));
   }
 }

@@ -8,5 +8,8 @@ export class Stock {
     public amount: number; // amount of stocks purchased at the same time
     public purchasePrice: number;
     public currentPrice: number;
-    public purchaseDate: Date;
+    public purchaseDate: string;
+    public change: number;
+    public change_percent: string;
+    public timestamp: string; // last refreshed
 }

@@ -20,6 +20,11 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
+      title: 'Interests',
+      url: '/interest',
+      icon: 'analytics-outline'
+    },
+    {
       title: 'Settings',
       url: '/settings',
       icon: 'settings'
