@@ -5,6 +5,7 @@ import { Stock } from '../model/stock.model';
 
 export class Tables {
     public static stocks: string = 'stocks';
+    public static interests: string = 'interests';
     public static settings: string = 'settings';
 }
 
@@ -73,11 +74,14 @@ export class Database {
         if(!this.db.has(Tables.stocks).value()) {
             this.db.set(Tables.stocks, []).write();
         }
+        if(!this.db.has(Tables.interests).value()) {
+            this.db.set(Tables.interests, []).write();
+        }
         if(!this.db.has(Tables.settings).value()) {
             this.db.set(Tables.settings, [
                 {id: 1, name: 'apikey', value: 'demo'},
                 {id: 2, name: 'ui_color', value: 'white'},
-                {id: 3, name: 'dark_mode', value: 'none'}
+                {id: 3, name: 'dark_mode', value: false}
             ]).write();
         }
     }
