@@ -8,14 +8,8 @@ import { App } from 'src/app/service/app.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   constructor(private store: StorageService) {
-    App.db = new Database(this.store);
-  }
-
-  async ngOnInit(): Promise<void> {
-    await App.db.read();
-    console.log(App.db.getApiKey());
   }
 }
