@@ -3,7 +3,7 @@ import { StockService } from 'src/app/service/stock.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-interest',
   templateUrl: 'interest.page.html',
   styleUrls: ['interest.page.scss'],
 })
