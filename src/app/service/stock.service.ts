@@ -26,12 +26,12 @@ export class StockService {
         });
     }
 
-    public async purchaseTest(symbol: string, amount: number): Promise<Stock> {
+    public async add(symbol: string, amount: number = 0): Promise<Stock> {
         try {
             const stock = new Stock();
-            const cur: any = await this.current(symbol);
             const obj: any = await this.find(symbol);
-            stock.symbol = obj['1. symbol'];
+            stock.symbol = obj['1. symbol']
+            const cur: any = await this.current(symbol);
             stock.name = obj['2. name'];
             stock.type = obj['3. type'];
             stock.region = obj['4. region'];
@@ -39,6 +39,8 @@ export class StockService {
             stock.purchaseDate = cur.date;
             stock.purchasePrice = cur.price;
             stock.currentPrice = cur.price;
+            stock.change = cur.change;
+            stock.change_percent = cur.change_percent;
             stock.amount = amount;
             return stock;
         }

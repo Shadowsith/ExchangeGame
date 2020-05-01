@@ -30,9 +30,12 @@ export class Database {
         return this.db.get(tableName);
     }
 
+    public setTable(tableName: string, values: any): void {
+        this.db.set(tableName, values).write();
+    }
+
     public select<T>(tableName: string, where: object = null): Array<T> {
         let val: any = this.db.get(tableName);
-        console.log(val);
         if(where !== null) {
             val = val.find(where);
         }
