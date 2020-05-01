@@ -1,6 +1,7 @@
 import { App } from './app.service';
 import { HttpClient } from '@angular/common/http';
 import '../extensions/string.extension';
+import '../extensions/date.extension';
 import { Stock } from '../model/stock.model';
 
 export class StockService {
@@ -42,6 +43,7 @@ export class StockService {
             stock.change = cur.change;
             stock.change_percent = cur.change_percent;
             stock.amount = amount;
+            stock.timestamp = new Date().getUsDate(); 
             return stock;
         }
         catch {
@@ -57,7 +59,7 @@ export class StockService {
             date: res['07. latest trading day'],
             price: res['05. price'],
             change: res['09. change'],
-            change_precent: res['10. change percent']
+            change_percent: res['10. change percent']
         };
     }
 

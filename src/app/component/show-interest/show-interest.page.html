@@ -86,10 +86,22 @@
         <ion-grid>
             <ion-row>
                 <ion-col size="4">
-                    Perecent change
+                    Percentage change
+                </ion-col>
+                <ion-col [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
+                    {{stock.change_percent}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Status
                 </ion-col>
                 <ion-col>
-                    {{stock.change_percent}}
+                    {{stock.purchaseDate}}
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -101,7 +113,7 @@
                     Last update
                 </ion-col>
                 <ion-col>
-                    {{stock.purchaseDate}}
+                    {{stock.timestamp}}
                 </ion-col>
             </ion-row>
         </ion-grid>
