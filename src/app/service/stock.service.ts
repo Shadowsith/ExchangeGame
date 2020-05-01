@@ -30,8 +30,8 @@ export class StockService {
         try {
             const stock = new Stock();
             const obj: any = await this.find(symbol);
-            stock.symbol = obj['1. symbol']
-            const cur: any = await this.current(symbol);
+            stock.symbol = obj['1. symbol'];
+            const cur: any = await this.current(stock.symbol);
             stock.name = obj['2. name'];
             stock.type = obj['3. type'];
             stock.region = obj['4. region'];
