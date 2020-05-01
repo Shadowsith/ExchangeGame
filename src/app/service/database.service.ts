@@ -52,7 +52,7 @@ export class Database {
         val.find(oldVal).assign(newVal).write();
     }
 
-    public delete<T>(tableName: string, obj: T) {
+    public delete(tableName: string, obj: any) {
         const val = this.getTable(tableName);
         val.remove(obj).write();
     }
@@ -68,6 +68,11 @@ export class Database {
 
     public save(): void {
         this.storeage.setDatabase(this.db);
+    }
+
+    // remove currpted data
+    public clean(): void {
+        this.delete(Tables.interests, {symbol: null});
     }
 
     public async read() {

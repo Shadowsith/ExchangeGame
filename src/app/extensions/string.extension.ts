@@ -1,5 +1,6 @@
 declare interface String {
     format(args: string[]): string;
+    isNullEmptyOrUndefined(): boolean;
 }
 
 String.prototype.format = function(args: string[]) {
@@ -10,3 +11,7 @@ String.prototype.format = function(args: string[]) {
     }
     return formatted;
 };
+
+String.prototype.isNullEmptyOrUndefined = function() {
+    return this === undefined || this === null || this === '';
+}
