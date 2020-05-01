@@ -6,6 +6,7 @@ import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import '../../extensions/string.extension';
 import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
+import { SortInterestComponent } from 'src/app/component/sort-interest/sort-interest.page';
 
 @Component({
   selector: 'app-interest',
@@ -43,6 +44,16 @@ export class InterestPage {
       App.db.save();
       this.stocks = App.db.select<Stock>(Tables.interests);
     }
+  }
+
+  public async sort(): Promise<void> {
+    const popover = await this.pc.create({
+      component: SortInterestComponent,
+      componentProps: {
+        pc: this.pc
+      }
+    });
+    await popover.present();
   }
 
   public async show(item: Stock) {

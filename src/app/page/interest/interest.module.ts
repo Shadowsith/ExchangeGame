@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { InterestPage } from './interest.page';
-import { AddInterestComponent } from 'src/app/component/add-intereset/add-interest.page';
+import { AddInterestComponent } from 'src/app/component/add-interest/add-interest.page';
 import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
+import { SortInterestComponent } from 'src/app/component/sort-interest/sort-interest.page';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { ShowInterestComponent } from 'src/app/component/show-interest/show-inte
       }
     ])
   ],
-  entryComponents: [AddInterestComponent, ShowInterestComponent],
-  declarations: [InterestPage, AddInterestComponent, ShowInterestComponent]
+  entryComponents: [AddInterestComponent, ShowInterestComponent, SortInterestComponent],
+  declarations: [InterestPage, AddInterestComponent, ShowInterestComponent, SortInterestComponent]
 })
 export class InterestPageModule {}
