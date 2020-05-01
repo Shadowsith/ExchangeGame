@@ -66,6 +66,12 @@ export class Database {
         return this.db.get(Tables.stocks).value();
     }
 
+    public removeDuplicates(tableName: string, uniqueBy: string): void {
+        const table: any = this.db.get(tableName);
+        const val = table.uniqBy(uniqueBy).value();
+        this.db.set(tableName, val).write();
+    }
+
     public save(): void {
         this.storeage.setDatabase(this.db);
     }

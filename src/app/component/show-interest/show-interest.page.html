@@ -1,0 +1,119 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">Close</ion-button>
+        </ion-buttons>
+        <ion-title>
+            {{stock.symbol}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Company
+                </ion-col>
+                <ion-col>
+                    {{stock.name}}
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Stock Origin
+                </ion-col>
+                <ion-col>
+                    {{stock.region}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Currency
+                </ion-col>
+                <ion-col>
+                    {{stock.currency}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Type
+                </ion-col>
+                <ion-col>
+                    {{stock.type}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Current Price
+                </ion-col>
+                <ion-col [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
+                    {{stock.currentPrice}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Price change
+                </ion-col>
+                <ion-col [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
+                    {{stock.change}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Perecent change
+                </ion-col>
+                <ion-col>
+                    {{stock.change_percent}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="4">
+                    Last update
+                </ion-col>
+                <ion-col>
+                    {{stock.purchaseDate}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="primary">Update</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="danger">Delete</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

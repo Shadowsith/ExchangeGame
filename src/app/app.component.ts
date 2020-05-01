@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './service/storage.service';
 import { App } from './service/app.service';
 import { Database } from './service/database.service';
+import { HttpClient } from '@angular/common/http';
+import { StockService } from './service/stock.service';
 
 @Component({
   selector: 'app-root',
@@ -45,7 +47,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storage: StorageService
+    private storage: StorageService,
+    private http: HttpClient
   ) {
     this.initializeApp();
     App.db = new Database(storage);
@@ -60,6 +63,7 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     await App.db.read();
+    App.api = new StockService(this.http);
   }
 
   public showSubPages() {

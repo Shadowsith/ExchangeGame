@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { InterestPage } from './interest.page';
 import { AddInterestComponent } from 'src/app/component/add-intereset/add-interest.page';
+import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { AddInterestComponent } from 'src/app/component/add-intereset/add-intere
       }
     ])
   ],
-  entryComponents: [AddInterestComponent],
-  declarations: [InterestPage, AddInterestComponent]
+  entryComponents: [AddInterestComponent, ShowInterestComponent],
+  declarations: [InterestPage, AddInterestComponent, ShowInterestComponent]
 })
 export class InterestPageModule {}

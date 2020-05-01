@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ModalController } from '@ionic/angular';
 import { AddInterestComponent } from 'src/app/component/add-intereset/add-interest.page';
-import { StockService } from 'src/app/service/stock.service';
 import { Stock } from 'src/app/model/stock.model';
-import { HttpClient } from '@angular/common/http';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import '../../extensions/string.extension';
+import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
 
 @Component({
   selector: 'app-interest',
@@ -14,11 +13,9 @@ import '../../extensions/string.extension';
   styleUrls: ['interest.page.scss'],
 })
 export class InterestPage {
-  private api: StockService;
   public stocks: Array<Stock>;
 
-  constructor(public pc: PopoverController, private http: HttpClient) {
-    this.api = new StockService(http);
+  constructor(public pc: PopoverController, public mc: ModalController) {
     this.stocks = App.db.select<Stock>(Tables.interests);
   }
 
@@ -32,8 +29,9 @@ export class InterestPage {
     await popover.present();
     const symbol: string = ((await popover.onDidDismiss()).data);
     if(symbol !== undefined && symbol !== null && symbol !== '') {
-      const val = await this.api.add(symbol);
-      if(App.db.select<Stock>(Tables.interests, {symbol: symbol}) === undefined && val !== null) {
+      const val = await App.api.add(symbol);
+      if(App.db.select<Stock>(Tables.interests, {symbol: val.symbol}) === undefined && val !== null) {
+        console.log('here');
         App.db.insert<Stock>(Tables.interests, val);
       } else if(val !== null && val !== undefined) {
         const stock = new Stock();
@@ -42,12 +40,20 @@ export class InterestPage {
       } else {
         // TODO Meldung nicht gefunden oder Requests abwarten
       }
+      App.db.removeDuplicates(Tables.interests, 'symbol');
       App.db.save();
       this.stocks = App.db.select<Stock>(Tables.interests);
     }
   }
 
-  public checkCurse(item: Stock): boolean {
-    return item.change > 0;
+  public async show(item: Stock) {
+    const modal = await this.mc.create({
+      component: ShowInterestComponent,
+      componentProps: {
+        mc: this.mc,
+        stock: item
+      }
+    });
+    await modal.present();
   }
 }

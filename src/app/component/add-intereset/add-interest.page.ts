@@ -7,11 +7,11 @@ import { PopoverController, NavParams } from '@ionic/angular';
   styleUrls: ['add-interest.page.scss'],
 })
 export class AddInterestComponent {
-    private pc: PopoverController;
-    public symbol: string;
+  private pc: PopoverController;
+  public symbol: string;
 
   constructor(private navParams: NavParams) {
-      this.pc = navParams.data.pc;
+    this.pc = navParams.data.pc;
   }
 
   public add() {

@@ -37,7 +37,7 @@
             </ion-grid>
         </ion-item>
         <hr>
-        <ion-item *ngFor="let stock of stocks">
+        <ion-item *ngFor="let stock of stocks" (click)="show(stock)">
             <ion-grid [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
                 <ion-row>
                     <ion-col size="3">
