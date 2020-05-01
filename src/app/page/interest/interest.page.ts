@@ -54,6 +54,10 @@ export class InterestPage {
       }
     });
     await popover.present();
+    const res = await popover.onDidDismiss();
+    if(res.role === 'sort') {
+      this.stocks = App.db.select<Stock>(Tables.interests);
+    }
   }
 
   public async show(item: Stock) {
