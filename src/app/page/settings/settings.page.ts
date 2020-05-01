@@ -22,6 +22,6 @@ export class SettingsPage {
       { name: 'apikey', value: this.apikey });
     App.api.setApiKey(this.apikey);
     App.db.save();
-    this.alert.showMsg('Meldung', '', 'Die Einstellungen wurden gespeichert.', 'OK');
+    this.alert.showMsg('Message', '', 'The settings were saved successfully.', 'OK');
   }
 }
