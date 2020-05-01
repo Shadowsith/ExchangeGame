@@ -22,17 +22,22 @@ export class StockService {
         return this.http.get(url).toPromise();
     }
 
-    public test() {
-        this.get(this.intraday).then(x => {
-        });
-    }
-
     private setCurrent(stock: Stock, cur: any): Stock {
         stock.currentPrice = cur.price;
         stock.change = cur.change;
         stock.change_percent = cur.change_percent;
         stock.timestamp = new Date().getUsDate();
         return stock;
+    }
+
+    public setApiKey(apikey: string) {
+        this.apikey = apikey;
+        const pos = this.global.lastIndexOf('=');
+        const oldKey = this.global.substr(pos + 1);
+        this.global = this.global.replace(oldKey, apikey);
+        this.intraday = this.intraday.replace(oldKey, apikey);
+        this.search = this.search.replace(oldKey, apikey);
+        console.log(this.search);
     }
 
     public async update(stock: Stock): Promise<Stock> {
@@ -53,7 +58,7 @@ export class StockService {
             stock.purchaseDate = cur.date;
             stock.purchasePrice = cur.price;
             stock = this.setCurrent(stock, cur),
-            stock.amount = amount;
+                stock.amount = amount;
             return stock;
         }
         catch {

@@ -17,6 +17,7 @@ export class SettingsPage {
   public save() {
     App.db.update(Tables.settings, { name: 'apikey' },
       { name: 'apikey', value: this.apikey });
+    App.api.setApiKey(this.apikey);
     App.db.save();
   }
 }
