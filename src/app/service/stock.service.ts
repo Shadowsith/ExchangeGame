@@ -27,9 +27,22 @@ export class StockService {
         });
     }
 
+    private setCurrent(stock: Stock, cur: any): Stock {
+        stock.currentPrice = cur.price;
+        stock.change = cur.change;
+        stock.change_percent = cur.change_percent;
+        stock.timestamp = new Date().getUsDate();
+        return stock;
+    }
+
+    public async update(stock: Stock): Promise<Stock> {
+        const cur: any = await this.current(stock.symbol);
+        return this.setCurrent(stock, cur);
+    }
+
     public async add(symbol: string, amount: number = 0): Promise<Stock> {
         try {
-            const stock = new Stock();
+            let stock = new Stock();
             const obj: any = await this.find(symbol);
             stock.symbol = obj['1. symbol'];
             const cur: any = await this.current(stock.symbol);
@@ -39,11 +52,8 @@ export class StockService {
             stock.currency = obj['8. currency'];
             stock.purchaseDate = cur.date;
             stock.purchasePrice = cur.price;
-            stock.currentPrice = cur.price;
-            stock.change = cur.change;
-            stock.change_percent = cur.change_percent;
+            stock = this.setCurrent(stock, cur),
             stock.amount = amount;
-            stock.timestamp = new Date().getUsDate(); 
             return stock;
         }
         catch {
@@ -54,7 +64,7 @@ export class StockService {
     public async current(symbol: string): Promise<object> {
         const global = this.global.format([symbol]);
         let res = await this.get(global);
-        res = res['Global Quote'] ;
+        res = res['Global Quote'];
         return {
             date: res['07. latest trading day'],
             price: res['05. price'],

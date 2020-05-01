@@ -23,9 +23,8 @@ export class ShowInterestComponent {
   }
 
   public async update() {
-    const val = await App.api.add(this.stock.symbol);
+    const val = await App.api.update(this.stock);
     if(val !== undefined) {
-      console.log('here');
       App.db.update<Stock>(Tables.interests, this.stock,  val);
     }
     this.mc.dismiss();
