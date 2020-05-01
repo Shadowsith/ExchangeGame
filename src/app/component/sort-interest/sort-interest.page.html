@@ -13,19 +13,19 @@
         <ion-label>
             Symbol
         </ion-label>
-        <ion-toggle [(ngModel)]="bySymbol"></ion-toggle>
+        <ion-toggle [(ngModel)]="bySymbol" (ngModelChange)="changeNonSymbol()"></ion-toggle>
     </ion-item>
     <ion-item>
         <ion-label>
             Stock value
         </ion-label>
-        <ion-toggle></ion-toggle>
+        <ion-toggle [(ngModel)]="byValue" (ngModelChange)="changeNonValue()"></ion-toggle>
     </ion-item>
     <ion-item>
         <ion-label>
             Price change
         </ion-label>
-        <ion-toggle></ion-toggle>
+        <ion-toggle [(ngModel)]="byChange" (ngModelChange)="changeNonChange()"></ion-toggle>
     </ion-item>
     <ion-item>
         <ion-label>Descending</ion-label>

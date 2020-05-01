@@ -20,6 +20,18 @@ export class SortInterestComponent {
     this.pc = navParams.data.pc;
   }
 
+  public changeNonSymbol() {
+      this.byValue = this.byChange = false;
+  }
+
+  public changeNonValue() {
+      this.bySymbol = this.byChange = false;
+  }
+
+  public changeNonChange() {
+      this.bySymbol = this.byValue = false;
+  }
+
   public close() {
     this.pc.dismiss(undefined, 'backdrop');
   }
