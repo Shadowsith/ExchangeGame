@@ -31,7 +31,6 @@ export class InterestPage {
     if(symbol !== undefined && symbol !== null && symbol !== '') {
       const val = await App.api.add(symbol);
       if(App.db.select<Stock>(Tables.interests, {symbol: val.symbol}) === undefined && val !== null) {
-        console.log('here');
         App.db.insert<Stock>(Tables.interests, val);
       } else if(val !== null && val !== undefined) {
         const stock = new Stock();
@@ -55,5 +54,10 @@ export class InterestPage {
       }
     });
     await modal.present();
+    const res = await modal.onDidDismiss();
+    if(res.role !== 'backdrop') {
+      this.stocks = App.db.select<Stock>(Tables.interests);
+      App.db.save();
+    }
   }
 }
