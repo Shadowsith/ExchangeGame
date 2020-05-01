@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component  } from '@angular/core';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 

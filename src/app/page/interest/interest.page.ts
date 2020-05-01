@@ -30,7 +30,7 @@ export class InterestPage {
     const symbol: string = ((await popover.onDidDismiss()).data);
     if(symbol !== undefined && symbol !== null && symbol !== '') {
       const val = await App.api.add(symbol);
-      if(App.db.select<Stock>(Tables.interests, {symbol: val.symbol}) === undefined && val !== null) {
+      if(App.db.select<Stock>(Tables.interests, {find: {symbol: val.symbol}}) === undefined && val !== null) {
         App.db.insert<Stock>(Tables.interests, val);
       } else if(val !== null && val !== undefined) {
         const stock = new Stock();

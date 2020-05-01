@@ -9,6 +9,16 @@ export class Tables {
     public static settings: string = 'settings';
 }
 
+/**
+ * Options for Database select method
+ */
+export class SelectOptions {
+    public find?: object = null;
+    public filter?: object = null;
+    public sortBy?: string = null;
+    public take?: number = null;
+}
+
 export class Database {
     private db: low.LowdbSync<any>;
     private storeage: StorageService;
@@ -34,10 +44,21 @@ export class Database {
         this.db.set(tableName, values).write();
     }
 
-    public select<T>(tableName: string, where: object = null): Array<T> {
+    public select<T>(tableName: string, where: SelectOptions = null): Array<T> {
         let val: any = this.db.get(tableName);
         if(where !== null) {
-            val = val.find(where);
+            if(where.find !== undefined) {
+                val = val.find(where.find);
+            }
+            if(where.filter !== undefined) {
+                val = val.filter(where.filter);
+            }
+            if(where.sortBy !== undefined) {
+                val = val.sortBy(where.sortBy);
+            }
+            if(where.take !== undefined) {
+                val = val.take(where.take);
+            }
         }
         return val.value();
     }
@@ -58,7 +79,8 @@ export class Database {
     }
 
     public getApiKey(): string {
-        const res: any = this.select(Tables.settings, {name: 'apikey'});
+        const res: any = this.select(Tables.settings, {find: {name: 'apikey'}});
+        console.log(res);
         return res.value;
     }
 
