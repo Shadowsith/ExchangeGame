@@ -4,6 +4,9 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-buttons slot="end">
+            <ion-button (click)="add()">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
             <ion-button (click)="sort()">
                 <ion-icon name="funnel-outline"></ion-icon>
             </ion-button>
@@ -58,5 +61,4 @@
             </ion-grid>
         </ion-item>
     </ion-list>
-    <ion-button (click)="add()">Add</ion-button>
 </ion-content>
