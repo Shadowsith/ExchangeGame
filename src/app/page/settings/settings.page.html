@@ -3,6 +3,11 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="save()">
+                <ion-icon name="save-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
         <ion-title>
             Settings
         </ion-title>
@@ -14,10 +19,4 @@
         <ion-label position="stacked">Stock Apikey</ion-label>
         <ion-input [(ngModel)]="apikey"></ion-input>
     </ion-item>
-
 </ion-content>
-<ion-footer>
-    <ion-toolbar>
-        <ion-button expand="block" (click)="save()">Save</ion-button>
-    </ion-toolbar>
-</ion-footer>
