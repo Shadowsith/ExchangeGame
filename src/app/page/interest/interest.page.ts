@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PopoverController, ModalController } from '@ionic/angular';
-import { AddInterestComponent } from 'src/app/component/add-intereset/add-interest.page';
+import { AddInterestComponent } from 'src/app/component/add-interest/add-interest.page';
 import { Stock } from 'src/app/model/stock.model';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
