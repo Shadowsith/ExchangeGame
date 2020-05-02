@@ -56,9 +56,12 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private storage: StorageService,
     private http: HttpClient,
-    private theme: ThemeService
+    private theme: ThemeService,
+    private statusbar: StatusBar
   ) {
     this.initializeApp();
+    this.statusBar.overlaysWebView(true);
+    this.statusBar.backgroundColorByHexString('#428cff');
     App.db = new Database(storage);
   }
 
