@@ -23,8 +23,8 @@ export class StockService {
     }
 
     private setCurrent(stock: Stock, cur: any): Stock {
-        stock.currentPrice = cur.price;
-        stock.change = cur.change;
+        stock.currentPrice = Math.floor(cur.price * 100) / 100;
+        stock.change = Math.floor(cur.change * 100) / 100;
         stock.change_percent = cur.change_percent;
         stock.timestamp = new Date().getUsDate();
         return stock;
@@ -56,7 +56,7 @@ export class StockService {
             stock.region = obj['4. region'];
             stock.currency = obj['8. currency'];
             stock.purchaseDate = cur.date;
-            stock.purchasePrice = cur.price;
+            stock.purchasePrice = Math.floor(cur.price * 100) / 100;
             stock = this.setCurrent(stock, cur),
                 stock.amount = amount;
             return stock;

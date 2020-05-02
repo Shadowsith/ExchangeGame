@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PopoverController, NavParams } from '@ionic/angular';
 import { App } from 'src/app/service/app.service';
 import { AlertService } from 'src/app/service/alert.service';
+import { Tables } from 'src/app/service/database.service';
+import { Stock } from 'src/app/model/stock.model';
 
 @Component({
   selector: 'app-add-deposit',
@@ -20,16 +22,21 @@ export class AddDepositComponent {
   }
 
   public async add() {
+    let dismiss = false;
     if (this.symbol === '' || this.amount < 1) {
       await this.alert.showMsg('Warning', '', 'Please add stock symbol/name and a valid amount');
     }
     const stock = await App.api.add(this.symbol, this.amount);
-    if(stock !== undefined) {
-      const alert = await this.alert.askMsg('Question', '', `Do you want buy ${this.amount} ` +
-       `of ${stock.symbol} (${stock.name}) for ${stock.purchasePrice * this.amount} ${stock.currency}?`);
-       console.log(alert);
+    if(stock !== undefined && stock !== null) {
+      const price = stock.currentPrice * stock.amount;
+      dismiss = await this.alert.askMsg('Question', '', `Do you want to buy ${stock.amount} Stocks` +
+       `of ${stock.symbol} (${stock.name}) for ${price} ${stock.currency}?`);
     }
-    this.pc.dismiss(undefined, 'refresh');
+    if (dismiss) {
+      App.db.insert<Stock>(Tables.stocks, stock);
+      App.db.save();
+      this.pc.dismiss(undefined, 'refresh');
+    }
   }
 
   public close() {

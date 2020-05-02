@@ -7,6 +7,7 @@ export class AlertService {
         msg: string, button = 'OK') {
         const alert = await this.alertController.create({
             header: header,
+            backdropDismiss: false,
             subHeader: subheader,
             message: msg,
             buttons: [button]
@@ -32,6 +33,7 @@ export class AlertService {
             }]
         });
         await alert.present();
-        return alert.dismiss(res, 'return');
+        await alert.onDidDismiss();
+        return res;
     }
 }

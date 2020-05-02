@@ -4,11 +4,11 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-buttons slot="end">
-            <ion-button>
-                <ion-icon name="add-outline" (click)="add()"></ion-icon>
+            <ion-button (click)="add()">
+                <ion-icon name="add-outline"></ion-icon>
             </ion-button>
-            <ion-button>
-                <ion-icon name="funnel-outline" (click)="sort()"></ion-icon>
+            <ion-button (click)="sort()">
+                <ion-icon name="funnel-outline"></ion-icon>
             </ion-button>
         </ion-buttons>
         <ion-title>
@@ -25,7 +25,41 @@
     </ion-card>
     <ion-list>
         <ion-item>
-
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <strong>Sym.</strong>
+                    </ion-col>
+                    <ion-col>
+                        <strong>pcs.</strong>
+                    </ion-col>
+                    <ion-col>
+                        <strong>Buy</strong>
+                    </ion-col>
+                    <ion-col>
+                        <strong>Marked</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+        <hr>
+        <ion-item *ngFor="let stock of stocks">
+            <ion-grid [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
+                <ion-row>
+                    <ion-col class="left">
+                        {{stock.symbol}}
+                    </ion-col>
+                    <ion-col>
+                        {{stock.amount}}
+                    </ion-col>
+                    <ion-col>
+                        {{stock.purchasePrice * stock.amount}} /<br>{{stock.purchasePrice}} {{stock.currency}}
+                    </ion-col>
+                    <ion-col>
+                        {{stock.currentPrice * stock.amount}} /<br>{{stock.currentPrice}} {{stock.currency}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-item>
     </ion-list>
 </ion-content>
