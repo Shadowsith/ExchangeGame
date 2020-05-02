@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./page/settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
+    path: 'help',
+    loadChildren: () => import('./page/help/help.module').then(m => m.HelpPageModule)
+  },
+  {
     path: 'about',
     loadChildren: () => import('./page/about/about.module').then(m => m.AboutPageModule)
   }

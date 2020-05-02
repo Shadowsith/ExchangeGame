@@ -26,17 +26,22 @@ export class AppComponent implements OnInit {
     {
       title: 'Deposit',
       url: '/deposit',
-      icon: 'stats-chart-outline'
+      icon: 'stats-chart'
     },
     {
       title: 'Interests',
       url: '/interest',
-      icon: 'analytics-outline'
+      icon: 'analytics'
     },
     {
       title: 'Settings',
       url: '/settings',
       icon: 'settings'
+    },
+    {
+      title: 'Help',
+      url: '/help',
+      icon: 'school'
     },
     {
       title: 'About',
