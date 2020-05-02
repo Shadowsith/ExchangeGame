@@ -5,10 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './service/storage.service';
 import { App } from './service/app.service';
-import { Database } from './service/database.service';
+import { Database, Tables } from './service/database.service';
 import { HttpClient } from '@angular/common/http';
 import { StockService } from './service/stock.service';
 import { ThemeService } from './service/theme.service';
+import { Settings } from './model/settings.model';
 
 @Component({
   selector: 'app-root',
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private storage: StorageService,
     private http: HttpClient,
+    private theme: ThemeService
   ) {
     this.initializeApp();
     App.db = new Database(storage);
@@ -65,6 +67,10 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     await App.db.read();
     App.api = new StockService(this.http);
+    if (App.db.selectOne<Settings>(Tables.settings,
+      { find: { name: 'darkMode' } }).value === true) {
+        this.theme.enableDark();
+    }
   }
 
   public showSubPages() {
