@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
  import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from './service/storage.service';
+import { ThemeService } from './service/theme.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { StorageService } from './service/storage.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     StorageService,
+    ThemeService,
   ],
   bootstrap: [AppComponent]
 })

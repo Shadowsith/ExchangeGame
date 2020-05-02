@@ -8,6 +8,7 @@ import { App } from './service/app.service';
 import { Database } from './service/database.service';
 import { HttpClient } from '@angular/common/http';
 import { StockService } from './service/stock.service';
+import { ThemeService } from './service/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -48,17 +49,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private storage: StorageService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
-
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    toggleDarkTheme(prefersDark.matches);
-    // Listen for changes to the prefers-color-scheme media query
-    prefersDark.addListener((mediaQuery) => toggleDarkTheme(mediaQuery.matches));
-    // Add or remove the "dark" class based on if the media query matches
-    function toggleDarkTheme(shouldAdd) {
-      document.body.classList.toggle('dark', shouldAdd);
-    }
     this.initializeApp();
     App.db = new Database(storage);
   }
