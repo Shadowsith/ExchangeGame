@@ -1,4 +1,5 @@
 export class Settings {
-    public apikey: string = '';
-    public color: string = '';
+    public id: number = 0;
+    public name: string = '';
+    public value: any = null;
 }

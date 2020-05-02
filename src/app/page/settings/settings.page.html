@@ -19,4 +19,12 @@
         <ion-label position="stacked">Stock Apikey</ion-label>
         <ion-input [(ngModel)]="apikey"></ion-input>
     </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Virtual budget (USD)</ion-label>
+        <ion-input [(ngModel)]="budget"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Dark mode (experimental)</ion-label>
+        <ion-toggle [(ngModel)]="darkMode" (ngModelChange)="toggleDarkTheme()"></ion-toggle>
+    </ion-item>
 </ion-content>
