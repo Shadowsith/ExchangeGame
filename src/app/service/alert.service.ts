@@ -13,4 +13,25 @@ export class AlertService {
         });
         await alert.present();
     }
+
+    public async askMsg(header: string, subheader: string, msg: string): Promise<boolean> {
+        let res = false;
+        const alert = await this.alertController.create({
+            header: header,
+            subHeader: subheader,
+            message: msg,
+            buttons: [ {
+                text: 'OK',
+                role: 'ok',
+                handler: () => { res = true; }
+            }, 
+            {
+                text: 'Abort',
+                role: 'dismiss',
+                handler: () => { res = false; }
+            }]
+        });
+        await alert.present();
+        return alert.dismiss(res, 'return');
+    }
 }

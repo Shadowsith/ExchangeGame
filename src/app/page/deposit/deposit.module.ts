@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { DepositPage } from './deposit.page';
+import { AddDepositComponent } from 'src/app/component/add-deposit/add-deposit.page';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { DepositPage } from './deposit.page';
       }
     ])
   ],
-  declarations: [DepositPage]
+  declarations: [DepositPage, AddDepositComponent],
+  entryComponents: [AddDepositComponent]
 })
 export class DepositPageModule {}
