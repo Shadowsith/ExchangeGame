@@ -13,6 +13,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StorageService } from './service/storage.service';
 import { ThemeService } from './service/theme.service';
 import { ShowStockComponent } from './component/show-stock/show-stock.page';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent, ShowStockComponent],
@@ -25,6 +27,7 @@ import { ShowStockComponent } from './component/show-stock/show-stock.page';
     AppRoutingModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,
