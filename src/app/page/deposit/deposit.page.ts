@@ -15,7 +15,8 @@ export class DepositPage {
   public stocks: Stock[] = [];
 
   constructor(private pc: PopoverController, private mc: ModalController) {
-      this.stocks = App.db.select<Stock>(Tables.stocks);
+      this.stocks = App.db.select<Stock>(Tables.deposit);
+      console.log(this.stocks);
   }
 
   public async add() {
@@ -29,7 +30,7 @@ export class DepositPage {
     await popover.present();
     const res = await popover.onDidDismiss();
     if(res.role = 'refresh') {
-      this.stocks = App.db.select<Stock>(Tables.stocks);
+      this.stocks = App.db.select<Stock>(Tables.deposit);
     }
   }
 
@@ -45,12 +46,16 @@ export class DepositPage {
     await modal.present();
     const res = await modal.onDidDismiss();
     if(res.role !== 'backdrop') {
-      this.stocks = App.db.select<Stock>(Tables.stocks);
+      this.stocks = App.db.select<Stock>(Tables.deposit);
       App.db.save();
     }
   }
 
   public async sort() {
     alert('here');
+  }
+
+  public calcSum(price: number, amount: number): number {
+    return Math.floor(price * amount * 100) / 100;
   }
 }

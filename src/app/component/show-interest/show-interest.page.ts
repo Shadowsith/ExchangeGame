@@ -30,7 +30,7 @@ export class ShowInterestComponent {
     const val = await App.api.update(this.stock);
     if (this.isDeposit) {
       if (val !== undefined) {
-        App.db.update<Stock>(Tables.stocks, this.stock, val);
+        App.db.update<Stock>(Tables.deposit, this.stock, val);
       }
     } else {
       if (val !== undefined) {
@@ -42,7 +42,7 @@ export class ShowInterestComponent {
 
   public delete() {
     if (this.isDeposit) {
-      App.db.delete(Tables.stocks, this.stock);
+      App.db.delete(Tables.deposit, this.stock);
     } else {
       App.db.delete(Tables.interests, { symbol: this.stock.symbol });
     }

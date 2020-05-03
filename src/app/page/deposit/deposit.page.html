@@ -53,10 +53,10 @@
                         {{stock.amount}}
                     </ion-col>
                     <ion-col>
-                        {{stock.purchasePrice * stock.amount}} /<br>{{stock.purchasePrice}} {{stock.currency}}
+                        {{calcSum(stock.purchasePrice, stock.amount)}} <br>{{stock.purchasePrice}} {{stock.currency}}
                     </ion-col>
                     <ion-col>
-                        {{stock.currentPrice * stock.amount}} /<br>{{stock.currentPrice}} {{stock.currency}}
+                        {{calcSum(stock.currentPrice, stock.amount)}} /<br>{{stock.currentPrice}} {{stock.currency}}
                     </ion-col>
                 </ion-row>
             </ion-grid>

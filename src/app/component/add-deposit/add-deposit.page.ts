@@ -28,12 +28,12 @@ export class AddDepositComponent {
     }
     const stock = await App.api.add(this.symbol, this.amount);
     if(stock !== undefined && stock !== null) {
-      const price = stock.currentPrice * stock.amount;
+      const price = Math.floor(stock.currentPrice * stock.amount * 100) / 100;
       dismiss = await this.alert.askMsg('Question', '', `Do you want to buy ${stock.amount} Stocks` +
        `of ${stock.symbol} (${stock.name}) for ${price} ${stock.currency}?`);
     }
     if (dismiss) {
-      App.db.insert<Stock>(Tables.stocks, stock);
+      App.db.insert<Stock>(Tables.deposit, stock);
       App.db.save();
       this.pc.dismiss(undefined, 'refresh');
     }

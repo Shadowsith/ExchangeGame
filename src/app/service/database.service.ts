@@ -4,7 +4,7 @@ import { StorageService } from './storage.service';
 import { Stock } from '../model/stock.model';
 
 export class Tables {
-    public static stocks: string = 'stocks';
+    public static deposit: string = 'deposit';
     public static interests: string = 'interests';
     public static settings: string = 'settings';
 }
@@ -96,7 +96,7 @@ export class Database {
     }
 
     public getStocks(): Array<Stock> {
-        return this.db.get(Tables.stocks).value();
+        return this.db.get(Tables.deposit).value();
     }
 
     public removeDuplicates(tableName: string, uniqueBy: string): void {
@@ -118,8 +118,8 @@ export class Database {
         let json = await this.storeage.getDatabase();
         json = JSON.parse(json);
         this.db.defaults(json).write();
-        if (!this.db.has(Tables.stocks).value()) {
-            this.db.set(Tables.stocks, []).write();
+        if (!this.db.has(Tables.deposit).value()) {
+            this.db.set(Tables.deposit, []).write();
         }
         if (!this.db.has(Tables.interests).value()) {
             this.db.set(Tables.interests, []).write();
