@@ -20,7 +20,7 @@ import { SortInterestComponent } from 'src/app/component/sort-interest/sort-inte
       }
     ])
   ],
-  entryComponents: [AddInterestComponent, ShowInterestComponent, SortInterestComponent],
-  declarations: [InterestPage, AddInterestComponent, ShowInterestComponent, SortInterestComponent]
+  entryComponents: [AddInterestComponent, SortInterestComponent],
+  declarations: [InterestPage, AddInterestComponent, SortInterestComponent]
 })
 export class InterestPageModule {}

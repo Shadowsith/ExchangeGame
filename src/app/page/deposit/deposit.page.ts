@@ -4,6 +4,7 @@ import { AddDepositComponent } from 'src/app/component/add-deposit/add-deposit.p
 import { Stock } from 'src/app/model/stock.model';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
+import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
 
 @Component({
   selector: 'app-deposit',
@@ -29,6 +30,23 @@ export class DepositPage {
     const res = await popover.onDidDismiss();
     if(res.role = 'refresh') {
       this.stocks = App.db.select<Stock>(Tables.stocks);
+    }
+  }
+
+  public async show(item: Stock) {
+    const modal = await this.mc.create({
+      component: ShowInterestComponent,
+      componentProps: {
+        mc: this.mc,
+        stock: item,
+        isDeposit: true
+      }
+    });
+    await modal.present();
+    const res = await modal.onDidDismiss();
+    if(res.role !== 'backdrop') {
+      this.stocks = App.db.select<Stock>(Tables.stocks);
+      App.db.save();
     }
   }
 

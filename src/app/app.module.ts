@@ -12,10 +12,12 @@ import { IonicStorageModule } from '@ionic/storage';
  import { HttpClientModule } from '@angular/common/http';
 import { StorageService } from './service/storage.service';
 import { ThemeService } from './service/theme.service';
+import { ShowInterestComponent } from './component/show-interest/show-interest.page';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ShowInterestComponent],
   entryComponents: [
+    ShowInterestComponent
   ],
   imports: [
     BrowserModule,
