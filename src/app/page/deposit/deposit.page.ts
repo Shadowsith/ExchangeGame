@@ -6,6 +6,7 @@ import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import { ShowStockComponent } from 'src/app/component/show-stock/show-stock.page';
 import { SortDepositComponent } from 'src/app/component/sort-deposit/sort-deposit.page';
+import { Settings } from 'src/app/model/settings.model';
 
 @Component({
   selector: 'app-deposit',
@@ -14,10 +15,12 @@ import { SortDepositComponent } from 'src/app/component/sort-deposit/sort-deposi
 })
 export class DepositPage {
   public stocks: Stock[] = [];
+  public budget: number = 0;
 
   constructor(private pc: PopoverController, private mc: ModalController) {
       this.stocks = App.db.select<Stock>(Tables.deposit);
-      console.log(this.stocks);
+      this.budget = App.db.selectOne<Settings>(Tables.settings, {find: {name: 'budget'}}).value;
+      console.log(this.budget);
   }
 
   public async add() {
@@ -25,12 +28,14 @@ export class DepositPage {
       component: AddDepositComponent,
       backdropDismiss: false,
       componentProps: {
-        pc: this.pc
+        pc: this.pc,
+        budget: this.budget
       }
     });
     await popover.present();
     const res = await popover.onDidDismiss();
     if(res.role = 'refresh') {
+      this.budget = App.db.selectOne<Settings>(Tables.settings, {find: {name: 'budget'}}).value;
       this.stocks = App.db.select<Stock>(Tables.deposit);
     }
   }
