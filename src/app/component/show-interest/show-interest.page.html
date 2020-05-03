@@ -58,11 +58,35 @@
             </ion-row>
         </ion-grid>
     </ion-item>
+    <ion-item *ngIf="isDeposit">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    Purchase price
+                </ion-col>
+                <ion-col>
+                    {{stock.purchasePrice}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+    <ion-item *ngIf="isDeposit">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    Amount
+                </ion-col>
+                <ion-col>
+                    {{stock.amount}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
     <ion-item>
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    Current Price
+                    Current price
                 </ion-col>
                 <ion-col [ngClass]="stock.change > 0 ? 'positive' : 'negative'">
                     {{stock.currentPrice}}

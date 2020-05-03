@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import { AlertService } from 'src/app/service/alert.service';
@@ -16,7 +17,7 @@ export class SettingsPage {
   public budget: number = 1000.0;
   public darkMode: boolean = false;
 
-  constructor(private theme: ThemeService) {
+  constructor(private theme: ThemeService, private statusbar: StatusBar) {
     this.alert = new AlertService();
     this.apikey = App.db.getApiKey();
     this.budget = App.db.selectOne<Settings>(
@@ -50,9 +51,9 @@ export class SettingsPage {
 
   public toggleDarkTheme() {
     if (this.darkMode) {
-      this.theme.enableDark();
+      this.theme.enableDark(this.statusbar);
     } else {
-      this.theme.enableLight();
+      this.theme.enableLight(this.statusbar);
     }
   }
 }

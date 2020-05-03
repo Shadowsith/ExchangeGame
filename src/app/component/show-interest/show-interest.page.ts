@@ -12,6 +12,7 @@ import { Tables } from 'src/app/service/database.service';
 export class ShowInterestComponent {
   private mc: ModalController;
   public stock: Stock;
+  public isDeposit: boolean = false;
 
   constructor(private navParams: NavParams) {
     this.mc = navParams.data.mc;

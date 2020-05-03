@@ -57,7 +57,6 @@ export class AppComponent implements OnInit {
     private storage: StorageService,
     private http: HttpClient,
     private theme: ThemeService,
-    private statusbar: StatusBar
   ) {
     this.initializeApp();
     this.statusBar.overlaysWebView(true);
@@ -77,7 +76,7 @@ export class AppComponent implements OnInit {
     App.api = new StockService(this.http);
     if (App.db.selectOne<Settings>(Tables.settings,
       { find: { name: 'darkMode' } }).value === true) {
-        this.theme.enableDark();
+        this.theme.enableDark(this.statusBar);
     }
   }
 
