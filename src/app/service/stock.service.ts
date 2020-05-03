@@ -37,7 +37,6 @@ export class StockService {
         this.global = this.global.replace(oldKey, apikey);
         this.intraday = this.intraday.replace(oldKey, apikey);
         this.search = this.search.replace(oldKey, apikey);
-        console.log(this.search);
     }
 
     public async update(stock: Stock): Promise<Stock> {

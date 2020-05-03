@@ -91,7 +91,6 @@ export class Database {
 
     public getApiKey(): string {
         const res: any = this.select(Tables.settings, { find: { name: 'apikey' } });
-        console.log(res);
         return res.value;
     }
 

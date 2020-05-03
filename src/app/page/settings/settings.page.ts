@@ -25,15 +25,14 @@ export class SettingsPage {
     this.darkMode = App.db.selectOne<Settings>(
       Tables.settings, { find: { name: 'darkMode' } }).value;
     if (this.darkMode) {
-      this.theme.enableDark();
+      this.theme.enableDark(this.statusbar);
     }
   }
 
   ionViewWillLeave() {
-    console.log('here');
     if (App.db.selectOne<Settings>(
       Tables.settings, { find: { name: 'darkMode' } }).value === false) {
-        this.theme.enableLight();
+        this.theme.enableLight(this.statusbar);
     }
   }
 

@@ -11,15 +11,15 @@ export class ThemeService {
 
     enableDark(statusbar: StatusBar = null) {
         this.renderer.addClass(this.doc.body, 'dark-theme');
-        if (statusbar == null) {
-            statusbar.backgroundColorByHexString('#428cff');
+        if (statusbar !== null) {
+            statusbar.backgroundColorByHexString('#6a64ff');
         }
     }
 
     enableLight(statusbar: StatusBar = null) {
         this.renderer.removeClass(this.doc.body, 'dark-theme');
         if (statusbar !== null) {
-            statusbar.backgroundColorByHexString('#6a64ff');
+            statusbar.backgroundColorByHexString('#428cff');
         }
     }
 }

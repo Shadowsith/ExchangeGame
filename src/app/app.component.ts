@@ -60,7 +60,6 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
     this.statusBar.overlaysWebView(true);
-    this.statusBar.backgroundColorByHexString('#428cff');
     App.db = new Database(storage);
   }
 
@@ -77,6 +76,8 @@ export class AppComponent implements OnInit {
     if (App.db.selectOne<Settings>(Tables.settings,
       { find: { name: 'darkMode' } }).value === true) {
         this.theme.enableDark(this.statusBar);
+    } else {
+      this.theme.enableLight(this.statusBar);
     }
   }
 
