@@ -5,7 +5,7 @@ import { Stock } from 'src/app/model/stock.model';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import '../../extensions/string.extension';
-import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
+import { ShowStockComponent } from 'src/app/component/show-stock/show-stock.page';
 import { SortInterestComponent } from 'src/app/component/sort-interest/sort-interest.page';
 
 @Component({
@@ -62,7 +62,7 @@ export class InterestPage {
 
   public async show(item: Stock) {
     const modal = await this.mc.create({
-      component: ShowInterestComponent,
+      component: ShowStockComponent,
       componentProps: {
         mc: this.mc,
         stock: item

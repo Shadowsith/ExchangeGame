@@ -4,7 +4,7 @@ import { AddDepositComponent } from 'src/app/component/add-deposit/add-deposit.p
 import { Stock } from 'src/app/model/stock.model';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
-import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
+import { ShowStockComponent } from 'src/app/component/show-stock/show-stock.page';
 
 @Component({
   selector: 'app-deposit',
@@ -36,7 +36,7 @@ export class DepositPage {
 
   public async show(item: Stock) {
     const modal = await this.mc.create({
-      component: ShowInterestComponent,
+      component: ShowStockComponent,
       componentProps: {
         mc: this.mc,
         stock: item,

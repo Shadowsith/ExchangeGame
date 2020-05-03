@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { InterestPage } from './interest.page';
 import { AddInterestComponent } from 'src/app/component/add-interest/add-interest.page';
-import { ShowInterestComponent } from 'src/app/component/show-interest/show-interest.page';
+import { ShowStockComponent } from 'src/app/component/show-stock/show-stock.page';
 import { SortInterestComponent } from 'src/app/component/sort-interest/sort-interest.page';
 
 @NgModule({

@@ -5,11 +5,11 @@ import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 
 @Component({
-  selector: 'app-show-interest',
-  templateUrl: 'show-interest.page.html',
-  styleUrls: ['show-interest.page.scss'],
+  selector: 'app-show-stock',
+  templateUrl: 'show-stock.page.html',
+  styleUrls: ['show-stock.page.scss'],
 })
-export class ShowInterestComponent {
+export class ShowStockComponent {
   private mc: ModalController;
   public stock: Stock;
   public isDeposit: boolean = false;
