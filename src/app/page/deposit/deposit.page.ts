@@ -5,6 +5,7 @@ import { Stock } from 'src/app/model/stock.model';
 import { App } from 'src/app/service/app.service';
 import { Tables } from 'src/app/service/database.service';
 import { ShowStockComponent } from 'src/app/component/show-stock/show-stock.page';
+import { SortDepositComponent } from 'src/app/component/sort-deposit/sort-deposit.page';
 
 @Component({
   selector: 'app-deposit',
@@ -34,6 +35,20 @@ export class DepositPage {
     }
   }
 
+  public async sort(): Promise<void> {
+    const popover = await this.pc.create({
+      component: SortDepositComponent,
+      componentProps: {
+        pc: this.pc
+      }
+    });
+    await popover.present();
+    const res = await popover.onDidDismiss();
+    if(res.role === 'sort') {
+      this.stocks = App.db.select<Stock>(Tables.deposit);
+    }
+  }
+
   public async show(item: Stock) {
     const modal = await this.mc.create({
       component: ShowStockComponent,
@@ -49,10 +64,6 @@ export class DepositPage {
       this.stocks = App.db.select<Stock>(Tables.deposit);
       App.db.save();
     }
-  }
-
-  public async sort() {
-    alert('here');
   }
 
   public calcSum(price: number, amount: number): number {

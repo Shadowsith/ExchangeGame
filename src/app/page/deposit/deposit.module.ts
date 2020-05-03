@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { DepositPage } from './deposit.page';
 import { AddDepositComponent } from 'src/app/component/add-deposit/add-deposit.page';
+import { SortDepositComponent } from 'src/app/component/sort-deposit/sort-deposit.page';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { AddDepositComponent } from 'src/app/component/add-deposit/add-deposit.p
       }
     ])
   ],
-  declarations: [DepositPage, AddDepositComponent],
-  entryComponents: [AddDepositComponent]
+  declarations: [DepositPage, AddDepositComponent, SortDepositComponent],
+  entryComponents: [AddDepositComponent, SortDepositComponent]
 })
 export class DepositPageModule {}

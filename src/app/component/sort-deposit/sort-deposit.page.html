@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="close()">Close</ion-button>
+        </ion-buttons>
+        <ion-title>
+            Sort Interests
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-item>
+        <ion-label>
+            Symbol
+        </ion-label>
+        <ion-toggle [(ngModel)]="bySymbol" (ngModelChange)="changeNonSymbol()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            Stock value
+        </ion-label>
+        <ion-toggle [(ngModel)]="byValue" (ngModelChange)="changeNonValue()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>
+            Price change
+        </ion-label>
+        <ion-toggle [(ngModel)]="byChange" (ngModelChange)="changeNonChange()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+        <ion-label>Descending</ion-label>
+        <ion-toggle [(ngModel)]="desc" color="secondary"></ion-toggle>
+    </ion-item>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="primary" (click)="apply()">Apply</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
